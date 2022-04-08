@@ -1,4 +1,4 @@
-import { Component, createRef } from 'react';
+import { Component, createRef, useState } from 'react';
 
 class MainComponent extends Component {
     myRef = createRef(); // create simple ref
@@ -15,14 +15,13 @@ class MainComponent extends Component {
     }
 };
 
-class ChildComponent extends Component {
-    state = { isActive: true };
 
-    toggleButton = () => this.setState({ isActive: !this.state.isActive });
+const ChildComponent = () => {
+    const [state, setState] = useState(true);
 
-    render() {
-        return (
-            this.state.isActive ? <div>child component</div> : null
-        );
-    }
-};
+    toggleButton = () => setState(!state);
+
+    return (
+        state === true ? <div>child component</div> : null
+    )
+}
