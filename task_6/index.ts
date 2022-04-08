@@ -49,5 +49,19 @@ const tileArr: Array<ITile> = [
     },
 ];
 
+const activeTile = tileArr.filter(item => item.isActive);
+const sumPrice = activeTile.reduce((sum, item) => sum + item.price, 0)
+const count = activeTile.length;
+const averagePrice = Math.round(sumPrice / count);
+
+const result: IResult = {
+    totalPriceSum: sumPrice,
+    tileCount: count,
+    averagePriceSum: averagePrice
+}
+
+
+
+
 // write You code here
 // const result: IResult = ...
