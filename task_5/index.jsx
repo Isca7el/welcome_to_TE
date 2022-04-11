@@ -1,4 +1,6 @@
 import { useSelector } from 'react-redux';
+import { createSelector } from 'reselect';
+
 
 // our redux state
 reduxState = {
@@ -10,7 +12,10 @@ reduxState = {
 }
 
 const MainComponent = () => {
-    const userData = useSelector(reduxState => reduxState.userData); // subscribe and get only userData object
+    const userData = createSelector(reduxState => reduxState.userData);
+    const userOnline = createSelector(reduxState => reduxState.isOnline);
 
+    const memoizeUserData = createSelector(userData);
+    const memoizedUserOnline = createSelector(userOnline);
     // ... other code
 };
